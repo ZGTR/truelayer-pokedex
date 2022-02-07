@@ -35,12 +35,12 @@ npm install
 ```shell script
 cd path/to/project
 pipenv shell
-sls offline --stage_rcs local -s local-api --region local --httpPort 3010
+sls offline --stage_rcs local --stage local-api --region local --httpPort 5010
 ```
    
 - The output should be similar to this:
 ```shell script
- * Running on http://localhost:3010/ (Press CTRL+C to quit)
+ * Running on http://localhost:5010/ (Press CTRL+C to quit)
  * Restarting with stat
  * Debugger is active!
 ```

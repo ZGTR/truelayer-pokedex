@@ -5,10 +5,7 @@ plugins:
   - serverless-domain-manager
   - serverless-python-requirements
   - serverless-wsgi
-  - serverless-dynamodb-local
-  - serverless-pseudo-parameters
   - serverless-deployment-bucket
-  #  - serverless-kms-secrets
   - serverless-offline
 
 # exclude the code coverage files and circle ci files
@@ -24,18 +21,18 @@ custom:
     prod-rcs: Retain
     staging-rcs: Retain
     dev-rcs: Retain
+    test-rcs: Retain
     prod-api: Retain
     staging-api: Retain
     dev-api: Retain
-    test-rcs: Retain
     local: Retain
 
   domains:
     prod-api: api.truelayer-pokedex.com
     staging-api: staging-api.truelayer-pokedex.com
     dev-api: dev-api.truelayer-pokedex.com
-    test-api: localhost:3000
-    local-api: localhost:3010
+    test-api: localhost:5000
+    local-api: localhost:5010
 
   customDomain:
     basePath: ''
@@ -53,7 +50,6 @@ custom:
 
   stage: ${opt:stage, self:provider.stage}
   stage_rcs: ${opt:stage_rcs, self:provider.stage_rcs}
-
   authorizer: ${file(${self:custom.config_folder}/authorizer.yml)}
 
 functions: ${file(${self:custom.config_folder}/functions.yml)}
@@ -70,8 +66,6 @@ provider:
   stage_rcs: ${opt:stage_rcs}
   region: eu-west-2
 
-  iamRoleStatements: ${file(${self:custom.config_folder}/iamroles.yml)}
-
   environment:
     stage: ${self:provider.stage}
-    stage_rcs: ${self:provider.stage_rcs}
+    stage_rcs: ${opt:stage_rcs, self:stage_rcs.stage, 'local'}

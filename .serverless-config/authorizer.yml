@@ -15,4 +15,3 @@ authorizer_mobile_app_basic_auth:
   type: request
   identitySource: method.request.header.Authorization
   identityValidationExpression: Basic (.*)
-  #[-0-9a-zA-z\.]*$
