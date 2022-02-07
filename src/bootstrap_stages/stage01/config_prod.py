@@ -2,7 +2,6 @@ from datetime import timedelta
 
 from src.bootstrap_stages.stage00 import parameter_store
 from src.bootstrap_stages.stage01.config_base import ConfigBase
-from src.helpers.utils import Utils
 
 
 class ConfigProd(ConfigBase):

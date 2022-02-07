@@ -5,10 +5,6 @@ import boto3
 from moto import mock_s3, mock_ses
 
 from src.bootstrap.bootstrap_the_app import app
-from src.database.migrations.ddb_migrator import DDbMigrator
-from src.database.seeds.seeder import Seeder
-from src.helpers.utils import Utils
-
 
 @mock_s3
 @mock_ses

@@ -45,6 +45,16 @@ sls offline --stage local-api --region local --httpPort 5010
  * Debugger is active!
 ```
 
+- A list of the supported API endpoints will showup:
+```
+ANY | http://localhost:5010/local-api                               │
+│   POST | http://localhost:5010/2015-03-31/functions/app/invocations   │
+│   ANY | http://localhost:5010/local-api/{proxy*}                      │
+│   POST | http://localhost:5010/2015-03-31/functions/app/invocations   │
+│   GET | http://localhost:5010/local-api/v1/mobile-app/init            │
+│   POST | http://localhost:5010/2015-03-31/functions/app/invocations   │
+```
+
 ## Running Tests Locally
 - Run the tests:
 ```shell script

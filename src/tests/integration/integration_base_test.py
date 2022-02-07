@@ -1,8 +1,5 @@
 from datetime import datetime, timedelta
 
-from flask_jwt_extended import create_access_token, decode_token
-
-from src.helpers.utils import Utils
 from src.models.user import UserModel
 from src.resources import RcUserLogin, RcUserLogoutAccess, RcTokenRefresh
 from src.tests.base_test import BaseTest
