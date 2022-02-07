@@ -49,7 +49,6 @@ custom:
     dockerizePip: non-linux
 
   stage: ${opt:stage, self:provider.stage}
-  stage_rcs: ${opt:stage_rcs, self:provider.stage_rcs}
   authorizer: ${file(${self:custom.config_folder}/authorizer.yml)}
 
 functions: ${file(${self:custom.config_folder}/functions.yml)}
@@ -63,9 +62,7 @@ provider:
   timeout: 15 # Default is 6
   runtime: python3.7
   stage: ${opt:stage}
-  stage_rcs: ${opt:stage_rcs}
   region: eu-west-2
 
   environment:
     stage: ${self:provider.stage}
-    stage_rcs: ${opt:stage_rcs, self:stage_rcs.stage, 'local'}

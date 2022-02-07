@@ -28,20 +28,3 @@ app:
         cors: true
         authorizer: ${self:custom.authorizer.authorizer_mobile_app_basic_auth}
 
-    - http:
-        path: /v1/user/auth/token/refresh
-        method: POST
-        cors: true
-        authorizer: ${self:custom.authorizer.authorizer_mobile_app_bearer}
-
-    - http:
-        path: /admin
-        method: ANY
-        cors: true
-        authorizer: ${self:custom.authorizer.authorizer_admin}
-
-    - http:
-        path: /admin/{proxy+}
-        method: ANY
-        cors: true
-        authorizer: ${self:custom.authorizer.authorizer_admin}

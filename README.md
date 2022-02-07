@@ -35,7 +35,7 @@ npm install
 ```shell script
 cd path/to/project
 pipenv shell
-sls offline --stage_rcs local --stage local-api --region local --httpPort 5010
+sls offline --stage local-api --region local --httpPort 5010
 ```
    
 - The output should be similar to this:
