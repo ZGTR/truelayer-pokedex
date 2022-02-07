@@ -1,0 +1,3 @@
+app: src/bootstrap/bootstrap_the_app.app
+pythonBin: python3
+packRequirements: false

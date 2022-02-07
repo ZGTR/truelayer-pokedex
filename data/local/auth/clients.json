@@ -1,0 +1,12 @@
+[
+    {
+      "id": "1",
+      "client_id": "oh that's an id",
+      "client_secret": "and that's a big secret"
+    },
+    {
+      "id": "2",
+      "client_id": "2",
+      "client_secret": "2"
+    }
+]

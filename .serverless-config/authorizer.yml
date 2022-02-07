@@ -1,0 +1,18 @@
+authorizer_mobile_app_bearer:
+  name: authorizerMobileAppBearer
+  type: TOKEN
+  identitySource: method.request.header.Authorization
+  identityValidationExpression: Bearer (.*)
+
+authorizer_admin:
+  name: authorizerAdmin
+  type: TOKEN
+  identitySource: method.request.header.Authorization
+  identityValidationExpression: Bearer (.*)
+
+authorizer_mobile_app_basic_auth:
+  name: authorizerMobileAppBasicAuth
+  type: request
+  identitySource: method.request.header.Authorization
+  identityValidationExpression: Basic (.*)
+  #[-0-9a-zA-z\.]*$

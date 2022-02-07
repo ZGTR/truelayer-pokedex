@@ -1,0 +1,79 @@
+# English translations for PROJECT.
+# Copyright (C) 2020 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2020-02-26 13:34+0200\n"
+"PO-Revision-Date: 2020-02-26 13:35+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.8.0\n"
+
+#: src/core/resource.py:54
+msgid "An error happened while trying to make this operation."
+msgstr ""
+
+#: src/tests/integration/auth/test_login.py:43
+msgid ""
+"The Email you're trying to login with isn't registered with us. Please "
+"make sure it's typed in correctly."
+msgstr ""
+
+#: src/tests/integration/auth/test_login.py:65
+msgid "Incorrect Activation Code. Please try again."
+msgstr ""
+
+#: src/tests/integration/auth/test_login.py:111
+#: src/tests/integration/auth/test_refresh.py:122
+msgid "Token has expired."
+msgstr ""
+
+#: src/tests/integration/auth/test_logout_access.py:37
+#: src/tests/integration/auth/test_logout_refresh.py:37
+#: src/tests/integration/auth/test_refresh.py:55
+msgid "Signature verification failed"
+msgstr ""
+
+#: src/tests/integration/auth/test_logout_access.py:47
+msgid "Access token has been revoked"
+msgstr ""
+
+#: src/tests/integration/auth/test_logout_access.py:61
+#: src/tests/integration/auth/test_logout_refresh.py:61
+msgid "Token has been revoked"
+msgstr ""
+
+#: src/tests/integration/auth/test_logout_refresh.py:47
+msgid "Refresh token has been revoked"
+msgstr ""
+
+#: src/tests/integration/auth/test_refresh.py:67
+#: src/tests/integration/auth/test_refresh.py:79
+#: src/tests/integration/auth/test_refresh.py:91
+msgid "You are not an authorized client."
+msgstr ""
+
+#: src/tests/integration/auth/test_refresh.py:104
+msgid "Only refresh tokens are allowed"
+msgstr ""
+
+#: src/tests/integration/auth/test_signup.py:59
+msgid "Email is not the same as Username. For now this is not permitted."
+msgstr ""
+
+#: src/tests/integration/auth/test_signup.py:106
+msgid ""
+"An account with the same Email address already exists. Please make sure "
+"the Email you provided is correct or signup using a different email "
+"address. "
+msgstr ""
+

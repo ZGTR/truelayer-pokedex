@@ -1,0 +1,17 @@
+{
+  "model": "UserModel",
+  "data": [
+    {
+      "id": "1",
+      "creation_date": "2019-06-28T10:55:17.561547+0000",
+      "email": "user@test.com",
+      "firstname": "firstname",
+      "last_login": "2019-08-07T10:41:46.218748+0000",
+      "lastname": "lastname",
+      "password": "secret",
+      "user_type": "PatientBasic",
+      "username": "user",
+      "impaired_hand": "Left"
+    }
+  ]
+}

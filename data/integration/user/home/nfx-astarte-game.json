@@ -1,0 +1,15 @@
+{
+  "model": "NfxAstarteGameModel",
+  "data":[
+    {
+      "game_type": "SimpleTracker",
+      "order": 1,
+      "active": true,
+      "id": "987654321",
+      "title": "Simple Tracker",
+      "subtitle": "A good game",
+      "description": "A good description of the good game",
+      "instruction_video_url": "url.com"
+    }
+  ]
+}

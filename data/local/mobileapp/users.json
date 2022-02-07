@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "creation_date": "2019-06-28T10:55:17.561547+0000",
+    "email": "t@t.com",
+    "firstname": "test",
+    "last_login": "2019-08-07T10:41:46.218748+0000",
+    "lastname": "testlastname",
+    "password": "t",
+    "user_type": "PatientBasic",
+    "username": "t@t.com",
+    "impaired_hand": "Left"
+  },
+  {
+    "id": "123",
+    "creation_date": "2019-06-28T10:55:17.561547+0000",
+    "email": "w@t.com",
+    "firstname": "test123",
+    "last_login": "2019-08-07T10:41:46.218748+0000",
+    "lastname": "testlastname",
+    "password": "t",
+    "user_type": "PatientBasic",
+    "username": "t@t.com",
+    "impaired_hand": "Left"
+  },
+  {
+    "id": "124",
+    "creation_date": "2019-06-28T10:55:17.561547+0000",
+    "email": "e@t.com",
+    "firstname": "test124",
+    "last_login": "2019-08-07T10:41:46.218748+0000",
+    "lastname": "testlastname",
+    "password": "t",
+    "user_type": "PatientBasic",
+    "username": "t@t.com",
+    "impaired_hand": "Left"
+  },
+  {
+    "id": "125",
+    "creation_date": "2019-06-28T10:55:17.561547+0000",
+    "email": "r@t.com",
+    "firstname": "test125",
+    "last_login": "2019-08-07T10:41:46.218748+0000",
+    "lastname": "testlastname",
+    "password": "t",
+    "user_type": "PatientBasic",
+    "username": "t@t.com",
+    "impaired_hand": "Left"
+  }
+]

@@ -1,0 +1,3 @@
+[bandit]
+exclude: src/tests,src/bootstrap_stages/stage01
+targets: src

@@ -1,0 +1,47 @@
+authorizerAdmin:
+  handler: src/auth/authorizers/authorizer_admin.lambda_handler
+
+authorizerMobileAppBearer:
+  handler: src/auth/authorizers/authorizer_mobile_app_bearer.lambda_handler
+
+authorizerMobileAppBasicAuth:
+  handler: src/auth/authorizers/authorizer_mobile_app_basic_auth.lambda_handler
+
+app:
+  handler: wsgi_handler.handler
+  events:
+    - http:
+        path: /
+        method: ANY
+        cors: true
+        authorizer: ${self:custom.authorizer.authorizer_mobile_app_bearer}
+
+    - http:
+        path: /{proxy+}
+        method: ANY
+        cors: true
+        authorizer: ${self:custom.authorizer.authorizer_mobile_app_bearer}
+
+    - http:
+        path: /v1/mobile-app/init
+        method: GET
+        cors: true
+        authorizer: ${self:custom.authorizer.authorizer_mobile_app_basic_auth}
+
+    - http:
+        path: /v1/user/auth/token/refresh
+        method: POST
+        cors: true
+        authorizer: ${self:custom.authorizer.authorizer_mobile_app_bearer}
+
+    - http:
+        path: /admin
+        method: ANY
+        cors: true
+        authorizer: ${self:custom.authorizer.authorizer_admin}
+
+    - http:
+        path: /admin/{proxy+}
+        method: ANY
+        cors: true
+        authorizer: ${self:custom.authorizer.authorizer_admin}

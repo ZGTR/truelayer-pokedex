@@ -1,0 +1,15 @@
+{
+  "model": "ApiClientModel",
+  "data": [
+    {
+      "id": "1",
+      "client_id": "1",
+      "client_secret": "1"
+    },
+    {
+      "id": "2",
+      "client_id": "2",
+      "client_secret": "2"
+    }
+  ]
+}

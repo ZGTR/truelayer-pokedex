@@ -1,0 +1,36 @@
+# the packages dependencies should be omitted explicitly
+
+# test
+- hypothesis
+- nose
+- pytest
+- pytest-cov
+- moto
+- coverage
+- codecov
+- freezegun
+
+# debug
+- pydevd-pycharm
+
+# security
+- bandit
+
+# package name - required by
+- docker          # moto
+- cfn-lint        # moto
+- PyYAML          # moto, bandit
+- GitPython       # bandit
+- atomicwrites    # pytest
+- sshpubkeys      # moto
+- cryptography    # moto, sshpubkeys
+- cffi            # cryptography
+- gitdb2          # GitPython
+- smmap           # gitdb2
+- jsondif         # moto
+- jsonpatch       # cfn-lint
+- jsonpointer     # jsonpatch
+- stevedore       # bandit
+- wcwidth         # pytest
+- websocket-client # docker
+- xmltodict       # moto

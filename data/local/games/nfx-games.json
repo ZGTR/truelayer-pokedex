@@ -1,0 +1,72 @@
+[
+  {
+    "game_type": "SimpleTracker",
+    "order": 1,
+    "active": true,
+    "id": "987654321",
+    "title": "Simple Tracker",
+    "subtitle": "A good game",
+    "description": "A good description of the good game",
+    "instruction_video_url": "url.com"
+  },
+  {
+    "game_type": "EVibrator",
+    "order": 2,
+    "active": true,
+    "id": "987654320",
+    "title": "Hand Vibration",
+    "subtitle": "A good game 22",
+    "description": "A good description of the good game 22",
+    "instruction_video_url": "url22.com"
+  },
+  {
+    "game_type": "Pong",
+    "order": 3,
+    "active": true,
+    "id": "987654322",
+    "title": "Pong",
+    "subtitle": "A good game 2",
+    "description": "A good description of the good game 2",
+    "instruction_video_url": "url2.com"
+  },
+  {
+    "game_type": "HolidaysJogging",
+    "order": 4,
+    "active": true,
+    "id": "987654323",
+    "title": "HolidaysJogging",
+    "subtitle": "A good game 3",
+    "description": "A good description of the good game 3",
+    "instruction_video_url": "url3.com"
+  },
+  {
+    "game_type": "SpaceShooter",
+    "order": 5,
+    "active": true,
+    "id": "987654324",
+    "title": "SpaceShooter",
+    "subtitle": "A good game 4",
+    "description": "A good description of the good game 4",
+    "instruction_video_url": "url4.com"
+  },
+  {
+    "game_type": "RehabDiver",
+    "order": 6,
+    "active": true,
+    "id": "987654325",
+    "title": "RehabDiver",
+    "subtitle": "A good game 5",
+    "description": "A good description of the good game 5",
+    "instruction_video_url": "url5.com"
+  },
+  {
+    "game_type": "PacMan",
+    "order": 7,
+    "active": true,
+    "id": "987654326",
+    "title": "PacMan",
+    "subtitle": "A good game 6",
+    "description": "A good description of the good game 6",
+    "instruction_video_url": "url6.com"
+  }
+]
