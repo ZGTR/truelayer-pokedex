@@ -13,8 +13,8 @@ class PokemonTranslatedFactory(metaclass=SingletonMeta):
         pass
 
     def grab(self, pokemon_name):
+        pokemon = ClientPokeApi().grab(pokemon_name)
         try:
-            pokemon = ClientPokeApi().grab(pokemon_name)
             strategy = PokemonTranslationFactory().create_strategy(pokemon)
             pokemon.description = strategy.translate(pokemon.description)
             return pokemon

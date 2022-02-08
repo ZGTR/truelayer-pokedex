@@ -26,7 +26,30 @@ class TestPokemonTranslated(BaseTest):
     # The translation API may have an extremely low limit (5 per hour).
     # Therefore, we'll mock the translation API call responses.
 
-    def test_happy_scenario_end_to_end(self):
+    @skip
+    # This is a flaky test since it calls the actual API. It's good to keep it though for local testing.
+    def test_happy_scenario_end_to_end_actual_translation_api(self):
+        response = self.app.get(url_for('rcpokemontranslated', pokemon_name='mewtwo'))
+
+        self.assertStatusCode(response, 200)
+
+        actual_response = response.get_json()
+
+        expected_response = dict(
+            v=1,
+            name= 'mewtwo',
+            description= '"Created by\\na scientist after\\nyears of horrific\\fgene splicing and\\ndna engineering\\nexperiments,  it was"',
+            habitat= 'rare',
+            isLegendary= True
+        )
+
+        self.assertDictStructure(expected_response, actual_response)
+        self.assertEqual(expected_response['name'], actual_response['name'])
+        self.assertEqual(expected_response['description'], actual_response['description'])
+        self.assertEqual(expected_response['habitat'], actual_response['habitat'])
+        self.assertEqual(expected_response['isLegendary'], actual_response['isLegendary'])
+
+    def test_happy_scenario_end_to_end_mock_translation_api(self):
         with mock.patch.object(PokemonTranslationStrategyYoda, 'translate', new=mocked_translate_api):
             response = self.app.get(url_for('rcpokemontranslated', pokemon_name='mewtwo'))
 
@@ -37,8 +60,6 @@ class TestPokemonTranslated(BaseTest):
             expected_response = dict(
                 v=1,
                 name= 'mewtwo',
-                # Since the business requirement is that any PokeAPI.pokemon.description works,
-                # we can mock this to make this work regardless of the 3rd party API changing behaviour
                 description= TRANSLATED_DESCRIPTION.substitute(description=
                                                                'It was created by\na scientist after\nyears of horrific\fgene splicing and\nDNA engineering\nexperiments.'),
                 habitat= 'rare',

@@ -26,7 +26,7 @@ class ClientTranslationYoda(metaclass=SingletonMeta):
             resp = requests.post(self.basic_url, params={}, json=data)
             if resp.status_code == 429:
                 raise ExceptionApiTranslationTooManyRequests()
-            json = resp.json
+            json = resp.json()
             return json['contents']['translated']
         except:
             raise ExceptionApiTranslationYodaError()
