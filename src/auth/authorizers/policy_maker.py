@@ -5,7 +5,7 @@ from https://github.com/awslabs/aws-apigateway-lambda-authorizer-blueprints/blob
 from src.auth.auth_policy import AuthPolicy, HttpVerb
 
 
-def _get_token(event):
+def get_token(event):
 
     if 'authorizationToken' not in event:
         return False, None
@@ -25,9 +25,8 @@ def _get_token(event):
     return True, token
 
 
-def _get_principal_id(event, const_token):
-    # logger.error("At _get_principal_id for event: %s", event)
-    is_valid, token = _get_token(event)
+def get_principal_id(event, const_token):
+    is_valid, token = get_token(event)
 
     if not is_valid:
         return None
@@ -35,12 +34,12 @@ def _get_principal_id(event, const_token):
     if token != const_token:
         return None
 
-    principal_id = "nfx/user/actual"
+    principal_id = "truelayer/user/actual"
 
     return principal_id
 
 
-def _generate_default_policy(event, principal_id):
+def generate_default_policy(event, principal_id):
     tmp = event['methodArn'].split(':')
     apiGatewayArnTmp = tmp[5].split('/')
     awsAccountId = tmp[4]

@@ -2,11 +2,7 @@ import dataclasses
 import decimal
 import json
 from datetime import datetime, date
-
 from flask_babel import LazyString
-from pynamodb.attributes import MapAttribute
-
-from src.core.models import Collection
 from src.models import BaseModel
 
 

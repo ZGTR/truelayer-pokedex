@@ -3,7 +3,6 @@ from http.client import HTTPException
 import flask
 from flask import Blueprint
 from marshmallow import ValidationError
-from pynamodb.exceptions import DoesNotExist
 
 from src.bootstrap_stages.stage01 import config
 
@@ -21,11 +20,6 @@ def on_validation_error(e):
 
 @errors.app_errorhandler(404)
 def on_error_404(e):
-    return flask.jsonify(error=404, text=str(e)), 404
-
-
-@errors.app_errorhandler(DoesNotExist)
-def on_error_doesNotExist(e):
     return flask.jsonify(error=404, text=str(e)), 404
 
 

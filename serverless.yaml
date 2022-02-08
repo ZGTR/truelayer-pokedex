@@ -5,10 +5,7 @@ plugins:
   - serverless-domain-manager
   - serverless-python-requirements
   - serverless-wsgi
-  - serverless-dynamodb-local
-  - serverless-pseudo-parameters
   - serverless-deployment-bucket
-  #  - serverless-kms-secrets
   - serverless-offline
 
 # exclude the code coverage files and circle ci files
@@ -16,6 +13,9 @@ package:
   exclude: ${file(${self:custom.config_folder}/slsignore.yml)}
 
 custom:
+  serverless-offline:
+    noPrependStageInUrl: false
+
   config_folder: './.serverless-config'
   rcsDeletePolicies:
     prod: Retain
@@ -24,10 +24,10 @@ custom:
     prod-rcs: Retain
     staging-rcs: Retain
     dev-rcs: Retain
+    test-rcs: Retain
     prod-api: Retain
     staging-api: Retain
     dev-api: Retain
-    test-rcs: Retain
     local: Retain
 
   domains:
@@ -35,7 +35,7 @@ custom:
     staging-api: staging-api.truelayer-pokedex.com
     dev-api: dev-api.truelayer-pokedex.com
     test-api: localhost:3000
-    local-api: localhost:3010
+    local-api: localhost:3000
 
   customDomain:
     basePath: ''
@@ -52,8 +52,6 @@ custom:
     dockerizePip: non-linux
 
   stage: ${opt:stage, self:provider.stage}
-  stage_rcs: ${opt:stage_rcs, self:provider.stage_rcs}
-
   authorizer: ${file(${self:custom.config_folder}/authorizer.yml)}
 
 functions: ${file(${self:custom.config_folder}/functions.yml)}
@@ -67,11 +65,7 @@ provider:
   timeout: 15 # Default is 6
   runtime: python3.7
   stage: ${opt:stage}
-  stage_rcs: ${opt:stage_rcs}
   region: eu-west-2
-
-  iamRoleStatements: ${file(${self:custom.config_folder}/iamroles.yml)}
 
   environment:
     stage: ${self:provider.stage}
-    stage_rcs: ${self:provider.stage_rcs}

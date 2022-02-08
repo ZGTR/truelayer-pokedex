@@ -14,34 +14,17 @@ app:
         path: /
         method: ANY
         cors: true
-        authorizer: ${self:custom.authorizer.authorizer_mobile_app_bearer}
+#        authorizer: ${self:custom.authorizer.authorizer_mobile_app_bearer}
 
     - http:
-        path: /{proxy+}
-        method: ANY
-        cors: true
-        authorizer: ${self:custom.authorizer.authorizer_mobile_app_bearer}
-
-    - http:
-        path: /v1/mobile-app/init
+        path: /v1/app/init
         method: GET
         cors: true
         authorizer: ${self:custom.authorizer.authorizer_mobile_app_basic_auth}
 
-    - http:
-        path: /v1/user/auth/token/refresh
-        method: POST
-        cors: true
-        authorizer: ${self:custom.authorizer.authorizer_mobile_app_bearer}
 
     - http:
-        path: /admin
-        method: ANY
+        path: /v1/pokemon/{proxy+}
+        method: GET
         cors: true
-        authorizer: ${self:custom.authorizer.authorizer_admin}
-
-    - http:
-        path: /admin/{proxy+}
-        method: ANY
-        cors: true
-        authorizer: ${self:custom.authorizer.authorizer_admin}
+        authorizer: ${self:custom.authorizer.authorizer_mobile_app_basic_auth}

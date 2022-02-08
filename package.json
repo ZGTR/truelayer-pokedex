@@ -1,23 +1,33 @@
 {
-  "name": "truelayer-pokedex",
+  "name": "alphazed-alqosh",
   "version": "1.0.0",
+  "private": true,
   "main": "index.js",
   "scripts": {
-    "deploy:full": "sls create_domain --stage ${stage} --stage_rcs ${stage_rcs} && sls deploy -v --stage ${stage} --stage_rcs ${stage_rcs}",
-    "deploy": "sls deploy -v --stage ${stage} --stage_rcs ${stage_rcs}"
+    "deploy": "sls create_domain --stage ${stage} --stage_rcs ${stage_rcs} --app_name ${app_name} && sls deploy -v --stage ${stage} --stage_rcs ${stage_rcs} --app_name ${app_name}",
+    "deploy-only": "sls deploy -v --stage ${stage} --stage_rcs ${stage_rcs} --app_name ${app_name}",
+    "no-deploy": "sls deploy -v --stage ${stage} --stage_rcs ${stage_rcs} --app_name ${app_name} --noDeploy",
+    "upgrade": "sls wsgi flask local -c \"db upgrade\" --stage ${stage} --stage_rcs ${stage_rcs} --app_name ${app_name}",
+    "downgrade": "sls wsgi flask local -c \"db downgrade base\" --stage ${stage} --stage_rcs ${stage_rcs} --app_name ${app_name}"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "serverless": "^3.1.1",
+    "@cruglobal/serverless-merge-config": "^1.1.0",
+    "serverless": "1.59.3",
     "serverless-deployment-bucket": "^1.1.0",
-    "serverless-domain-manager": "3.2.5",
-    "serverless-dynamodb-local": "^0.2.38",
-    "serverless-offline": "^8.4.0",
-    "serverless-pseudo-parameters": "^2.6.1",
+    "serverless-domain-manager": "3.2.6",
+    "serverless-ignore": "^0.1.6",
+    "serverless-offline": "^6.8.0",
+    "serverless-plugin-aws-alerts": "^1.4.0",
+    "serverless-plugin-warmup": "^4.7.0-rc.1",
+    "serverless-prune-plugin": "^1.4.3",
     "serverless-python-requirements": "^5.0.0",
-    "serverless-wsgi": "^1.7.2"
+    "serverless-wsgi": "^1.7.8"
+  },
+  "dependencies": {
+    "serverless-pseudo-parameters": "^2.5.0"
   }
 }
