@@ -27,8 +27,8 @@ class RcPokemonBasic(BaseResource):
             }
 
             return self.respond(resp)
-        except:
-            return self.respond_error(message='An error occured while calling the PokeApi.', error_code=500)
+        except Exception as e:
+            return self.respond_error(message=str(e), error_code=500)
 
 
 api.add_resource(RcPokemonBasic, RcPokemonBasic.path)

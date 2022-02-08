@@ -7,6 +7,9 @@ from src.core import SingletonMeta
 
 
 class ClientTranslationYoda(metaclass=SingletonMeta):
+    # Since we're dealing with a 3rd party API, it's good to put in a retry mechanism in the future with
+    # a custom MIN, MAX tries and a priority before erroring a request.
+
     def __init__(self):
         self.basic_url = config.THIRD_PARTY_URL_POKEMON_TRANSLATION_YODA
 
