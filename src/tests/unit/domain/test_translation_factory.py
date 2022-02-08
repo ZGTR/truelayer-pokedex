@@ -37,7 +37,5 @@ class TestTranslationFactory(BaseTest):
         strategy = PokemonTranslationFactory().create_strategy(pokemon=self.non_cave_and_not_legendary_pokemon)
         self.assertIsInstance(strategy, PokemonTranslationStrategyShakespeare)
 
-
-
 if __name__ == "__main__":
     unittest.main()

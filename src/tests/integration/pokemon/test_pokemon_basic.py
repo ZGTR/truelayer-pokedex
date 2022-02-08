@@ -3,13 +3,14 @@ from unittest import skip
 from unittest.mock import patch
 import mock
 from mock import patch
-
+from flask import url_for
 import requests
 from src.services import ClientPokeApi
 from src.tests.base import BaseTest
 
 def raising_error_grab(an_instance, pokemon_name):
     raise requests.exceptions.ConnectionError
+
 
 class TestPokemonBasic(BaseTest):
     # The PokeAPI may have a limiter and then we should either use a test account with a larger limit
@@ -22,11 +23,8 @@ class TestPokemonBasic(BaseTest):
     # etc.
 
 
-    def test_happy_scenario(self):
-        # We can use specific resource path instead of hard-coding it here.
-        path = "/v1/pokemon/mewtwo"
-
-        response = self.app.get(path)
+    def test_happy_scenario_end_to_end(self):
+        response = self.app.get(url_for('rcpokemonbasic', pokemon_name='mewtwo'))
 
         self.assertStatusCode(response, 200)
 
@@ -48,12 +46,8 @@ class TestPokemonBasic(BaseTest):
         self.assertEqual(expected_response['isLegendary'], actual_response['isLegendary'])
 
     def test_do_not_exist_pokemon(self):
-        path = "/v1/pokemon/does-not-exists"
-
-        response = self.app.get(path)
-
+        response = self.app.get(url_for('rcpokemonbasic', pokemon_name='does-not-exists'))
         self.assertStatusCode(response, 500)
-
         self.assertDictStructure(response.get_json(), dict(
             message='An error occurred while calling pokeapi.co.'
         ))
@@ -61,14 +55,9 @@ class TestPokemonBasic(BaseTest):
     # We can add a lot of tests mocking part of the workflow and checking the required behaviour after aligning that
     # with the POs.
     def test_problem_with_pokeapi(self):
-        # We can use specific resource path instead of hard-coding it here.
-        path = "/v1/pokemon/mewtwo"
-
         with mock.patch.object(ClientPokeApi, 'grab', new=raising_error_grab):
-            response = self.app.get(path)
-
+            response = self.app.get(url_for('rcpokemonbasic', pokemon_name='mewtwo'))
             self.assertStatusCode(response, 500)
-
             # We should be more concrete in the logic to handle different raised Exceptions.
             self.assertDictStructure(response.get_json(), dict(
                 message='An error occurred while calling pokeapi.co.'
