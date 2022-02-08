@@ -31,6 +31,7 @@ class TestPokemonBasic(BaseTest):
         actual_response = response.get_json()
 
         expected_response = dict(
+            v=1,
             name= 'mewtwo',
             # Since the business requirement is that any description work,
             # we can mock this to make this work regarless of the 3rd party API changing behaviour

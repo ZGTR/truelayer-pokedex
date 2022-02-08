@@ -20,6 +20,7 @@ class RcPokemonTranslated(BaseResource):
             # But, since we want to separate between presentation API and business layer,
             # it's better to keep them separate for now.
             resp = {
+                'v': 1,
                 'name': pokemon.name,
                 'description': pokemon.description,
                 'habitat': pokemon.habitat,

@@ -35,6 +35,7 @@ class TestPokemonTranslated(BaseTest):
             actual_response = response.get_json()
 
             expected_response = dict(
+                v=1,
                 name= 'mewtwo',
                 # Since the business requirement is that any PokeAPI.pokemon.description works,
                 # we can mock this to make this work regardless of the 3rd party API changing behaviour
@@ -61,6 +62,7 @@ class TestPokemonTranslated(BaseTest):
             actual_response = response.get_json()
 
             expected_response = dict(
+                v=1,
                 name= 'mewtwo',
                 description= 'It was created by\na scientist after\nyears of horrific\fgene splicing and\nDNA engineering\nexperiments.',
                 habitat= 'rare',
