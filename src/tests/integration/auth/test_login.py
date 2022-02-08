@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta
 
 from flask_babel import _
-from flask_jwt_extended import create_access_token
 from freezegun import freeze_time
 from hypothesis import given, settings
 from hypothesis.strategies import text, characters

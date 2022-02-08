@@ -1,7 +1,7 @@
 import json
 
 from src.auth.authorizers.api_clients import get_api_client_from_headers
-from src.auth.authorizers.policy_maker import _generate_default_policy
+from src.auth.authorizers.policy_maker import generate_default_policy
 from src.bootstrap_stages.stage00.logger_setup import logger
 
 
@@ -10,20 +10,19 @@ def _get_principal_id(event):
     # this call is cached for all authenticated calls, so we need to give
     # access to the whole api. This could be done by having a policyDocument
     # for each available function.
-
     client = get_api_client_from_headers(event)
 
     if client:
         principal_id = client['client_id']
         return principal_id
 
-    return False, None
+    return None
 
 
 def lambda_handler(event, context):
     principal_id = _get_principal_id(event)
 
-    policy = _generate_default_policy(event, principal_id)
+    policy = generate_default_policy(event, principal_id)
 
     if principal_id:
         policy.allowAllMethods()

@@ -7,7 +7,6 @@ from flask_restful import Resource
 from src.core.json_response import JsonResponse
 from src.core.schema import BaseSchema
 from src.bootstrap_stages.stage00.logger_setup import logger
-from flask_jwt_extended import current_user
 
 
 class BaseResource(Resource):

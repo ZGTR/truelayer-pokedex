@@ -1,16 +1,7 @@
 from datetime import datetime
-
-from flask_jwt_extended import create_access_token, create_refresh_token
 from munch import Munch
-from pynamodb.connection import Connection
-from pynamodb.transactions import TransactWrite
 
 from src.bootstrap_stages.stage00.logger_setup import logger
-from src.bootstrap_stages.stage02 import DDbConstants
-from src.domain import UsersGroups
-from src.models import UsersGroupsModel, DayLeaderboardModel
-from src.models.user import UserModel
-from src.models.users_memberships import UsersMembershipsModel
 
 
 class User(object):

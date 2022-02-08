@@ -1,4 +1,4 @@
 from . import *
 from .home import *
-from .impaired_hand import *
+from .pokemon_basic import *
 from .me import *

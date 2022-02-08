@@ -1,15 +1,9 @@
 from datetime import datetime, timedelta
 
-from src.models.user import UserModel
-from src.resources import RcUserLogin, RcUserLogoutAccess, RcTokenRefresh
 from src.tests.base_test import BaseTest
 
 
 class IntegrationBaseTest(BaseTest):
-    login_path = RcUserLogin.path
-    logout_access_path = RcUserLogoutAccess.path
-    refresh_path = RcTokenRefresh.path
-
     def assertStatusCode(self, response, status_code):
         self.assertEqual(status_code, response.status_code)
 

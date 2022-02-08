@@ -1,14 +1,12 @@
-from flask_jwt_extended import jwt_required
 
 from src.bootstrap.bootstrap_the_app import api
 from src.core.resource import BaseResource
 from src.domain import *
-from src.models.nfx_astarte_game import NfxAstarteGameModel
 from src.resources import get_mobileapp_init_resp
 
 
 class RcHome(BaseResource):
-    decorators = [jwt_required]
+    # decorators = [jwt_required]
     path = '/v1/user/home'
 
     def get(self):

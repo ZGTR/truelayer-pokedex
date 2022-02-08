@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta
 
 from flask_babel import _
-from flask_jwt_extended import create_refresh_token, create_access_token
 from freezegun import freeze_time
 from werkzeug.exceptions import UnprocessableEntity, Unauthorized, Forbidden
 

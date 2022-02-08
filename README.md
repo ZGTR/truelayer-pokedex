@@ -14,17 +14,13 @@ Built on top of the following tech: Serverless(sls), python (Flask), AWS: lambda
 
 
 ## Setup Local Development
-- Install Pipenv (system wide)
-```shell script
-pip install pipenv
-```
-
 - Create a virtual environment and install your dependencies (once):
 ```shell script
 cd path/to/project
-pipenv --rm
-pipenv install --python 3.7 --dev
-npm install
+rm -rf venv
+python3.7 -m venv venv
+source venv/bin/activate
+pip install -r requirements/development.txt
 ```
 
 #### Note for MacOS
@@ -34,8 +30,8 @@ npm install
 - Run the flask app:
 ```shell script
 cd path/to/project
-pipenv shell
-sls offline --stage local-api --region local --httpPort 5010
+source venv/bin/activate
+sls offline start --stage local-api --region local --httpPort 5010
 ```
    
 - The output should be similar to this:
