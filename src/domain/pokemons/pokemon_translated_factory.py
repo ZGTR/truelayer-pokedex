@@ -14,13 +14,8 @@ class PokemonTranslatedFactory(metaclass=SingletonMeta):
     def grab(self, pokemon_name):
         try:
             pokemon = ClientPokeApi().grab(pokemon_name)
-            print(f'---pokemon={pokemon.__dict__}')
-            print(f'---pre/pokemon.description={pokemon.description}')
-
             strategy = PokemonTranslationFactory().create_strategy(pokemon)
-            print(f'---strategy={strategy}')
             pokemon.description = strategy.translate(pokemon.description)
-            print(f'---post/pokemon.description={pokemon.description}')
             return pokemon
         except:
             # Should be a different exception based on error in PokeAPI or Translation.

@@ -14,9 +14,7 @@ class RcPokemonTranslated(BaseResource):
 
     def get(self, pokemon_name):
         try:
-            print(f'---INSIDE TRANSLATED')
             pokemon = PokemonTranslatedFactory().grab(pokemon_name)
-            print(f'---AFTER FACTORY')
 
             # We can return this directly from pokemon.__dict__ and JSONify it in 1 line.
             # But, since we want to separate between presentation API and business layer,

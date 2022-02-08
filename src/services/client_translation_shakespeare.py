@@ -5,6 +5,7 @@ import requests
 from src.bootstrap_stages.stage01 import config
 from src.core.metaclasses import SingletonMeta
 from src.domain.exceptions.exception_translation_shakespeare import ExceptionApiTranslationShakespeareError
+from src.domain.exceptions.exception_translation_too_many_requests import ExceptionApiTranslationTooManyRequests
 
 
 class ClientTranslationShakespeare(metaclass=SingletonMeta):
@@ -19,7 +20,10 @@ class ClientTranslationShakespeare(metaclass=SingletonMeta):
             data = {
                 'text': description
             }
-            resp = requests.post(self.basic_url, params={}, json=data).json()
-            return resp['contents']['translated']
+            resp = requests.post(self.basic_url, params={}, json=data)
+            if resp.status_code == 429:
+                raise ExceptionApiTranslationTooManyRequests()
+            json = resp.json
+            return json['contents']['translated']
         except:
             raise ExceptionApiTranslationShakespeareError()

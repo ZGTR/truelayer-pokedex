@@ -16,11 +16,11 @@ class TestInitCall(BaseTest):
                 {
                     'pokemon_basic':
                         {
-                            'href': url_for('rcpokemonbasic', pokemon_name='123'),
+                            'href': url_for('rcpokemonbasic', pokemon_name=''),
                         },
                     'pokemon_translated':
                         {
-                            'href': url_for('rcpokemontranslated', pokemon_name='123'),
+                            'href': url_for('rcpokemontranslated', pokemon_name=''),
                         }
                 }
         }

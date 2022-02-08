@@ -16,12 +16,8 @@ class PokemonTranslationFactory(metaclass=SingletonMeta):
     def create_strategy(self, pokemon) -> PokemonTranslationStrategy:
         try:
             if pokemon.habitat == 'cave' or pokemon.is_legendary:
-                print(f'I am PokemonTranslationStrategyYoda')
                 return PokemonTranslationStrategyYoda()
-
-            print(f'I am PokemonTranslationStrategyShakespeare')
             return PokemonTranslationStrategyShakespeare()
         except:
-            print(f'I am PokemonTranslationStrategyStandard')
             return PokemonTranslationStrategyStandard()
 

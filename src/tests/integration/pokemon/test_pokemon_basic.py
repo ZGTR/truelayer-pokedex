@@ -12,11 +12,15 @@ def raising_error_grab(an_instance, pokemon_name):
     raise requests.exceptions.ConnectionError
 
 class TestPokemonBasic(BaseTest):
+    # The PokeAPI may have a limiter and then we should either use a test account with a larger limit
+    # Or mock the API call responses same as we did in PokemonTranslated test.
+
     # Since we're dealing with 3rd party API, we can test all sort of timeout issues here Like:
     # 1. def test_request_poke_api_with_a_very_short_timeout_and_fails():
     # 2. def test_request_poke_api_with_a_long_timeout_successfully():
     # 3. def test_request_poke_api_errored():
     # etc.
+
 
     def test_happy_scenario(self):
         # We can use specific resource path instead of hard-coding it here.
@@ -38,6 +42,10 @@ class TestPokemonBasic(BaseTest):
         )
 
         self.assertDictStructure(expected_response, actual_response)
+        self.assertEqual(expected_response['name'], actual_response['name'])
+        self.assertEqual(expected_response['description'], actual_response['description'])
+        self.assertEqual(expected_response['habitat'], actual_response['habitat'])
+        self.assertEqual(expected_response['isLegendary'], actual_response['isLegendary'])
 
     def test_do_not_exist_pokemon(self):
         path = "/v1/pokemon/does-not-exists"
@@ -50,7 +58,7 @@ class TestPokemonBasic(BaseTest):
             message='An error occurred while calling pokeapi.co.'
         ))
 
-    # We can a lot of tests mocking part of the workflow and checking the required behaviour after aligning that
+    # We can add a lot of tests mocking part of the workflow and checking the required behaviour after aligning that
     # with the POs.
     def test_problem_with_pokeapi(self):
         # We can use specific resource path instead of hard-coding it here.
