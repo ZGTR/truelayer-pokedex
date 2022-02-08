@@ -14,4 +14,5 @@ authorizer_mobile_app_basic_auth:
   name: authorizerMobileAppBasicAuth
   type: request
   identitySource: method.request.header.Authorization
+  # It's better to use X-API keys here instead since this is an API for now.
   identityValidationExpression: Basic (.*)
