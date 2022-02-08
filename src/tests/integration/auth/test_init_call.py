@@ -1,15 +1,17 @@
 from flask import url_for
-
-from src.bootstrap.bootstrap_the_app import api
-from src.core.resource import BaseResource
+from src.tests.base import IntegrationBaseTest
 
 
-class RcMobileAppInitV1(BaseResource):
+class InitCallTest(IntegrationBaseTest):
     path = "/v1/app/init"
 
-    def get(self):
-        print('----- in resource')
-        resp = {
+    def test_init_success(self):
+        response = self.app.get(self.path)
+        self.assertStatusCode(response, 200)
+
+        actual_response = response.get_json()
+        expected_response = {
+            'success': True,
             'actions':
                 {
                     'pokemon_basic_description':
@@ -23,7 +25,4 @@ class RcMobileAppInitV1(BaseResource):
 
                 }
         }
-        return self.respond(resp)
-
-
-api.add_resource(RcMobileAppInitV1, RcMobileAppInitV1.path)
+        self.assertDictStructure(expected_response, actual_response)

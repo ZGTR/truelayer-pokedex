@@ -1,3 +1,4 @@
+import abc
 from marshmallow import fields
 from marshmallow.validate import OneOf
 
@@ -7,10 +8,11 @@ from src.core.schema import BaseSchema
 from src.domain import *
 
 
-class PokemonTranslationStrategyYoda:
+class PokemonTranslationStrategy(object):
 
     def __init__(self):
         pass
 
-    def translate(self, pokemon):
+    @abc.abstractmethod
+    def translate(self, description):
         return None

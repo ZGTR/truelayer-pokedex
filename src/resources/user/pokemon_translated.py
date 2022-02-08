@@ -7,18 +7,18 @@ from src.core.schema import BaseSchema
 from src.domain import *
 
 
-class RcPokemonBasic(BaseResource):
-    path = "/v1/pokemon/<:pokemon_name>"
+class RcPokemonTranslated(BaseResource):
+    path = "/v1/pokemon/translated/{pokemon_name}"
 
     def get(self):
         resp = {
             'name': '',
             'description': '',
             'habitat': '',
-            'isLegendary': '';
+            'isLegendary': '',
         }
 
         return self.respond(resp)
 
 
-api.add_resource(RcPokemonBasic, RcPokemonBasic.path)
+api.add_resource(RcPokemonTranslated, RcPokemonTranslated.path)

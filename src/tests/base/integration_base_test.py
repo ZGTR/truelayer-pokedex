@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
-
-from src.tests.base_test import BaseTest
+from src.tests.base import BaseTest
 
 
 class IntegrationBaseTest(BaseTest):
@@ -34,29 +33,6 @@ class IntegrationBaseTest(BaseTest):
         self.assertIsNotNone(response)
 
         return response
-
-    def assertUserSignedUp(self, data, user):
-        self.assertIsNotNone(data)
-
-        expected_response = dict(
-            username=user['username'],
-            firstname=user['firstname'],
-            lastname=user['lastname'],
-            user_type="PatientBasic",
-            password=user['password'],
-            email=user['email'],
-            country=user.get('country', None),
-            id=Utils.get_random_id(),
-            creation_date=Utils.date_to_str(datetime.now()),
-            impaired_hand='None',
-            success=True,
-            utc_offset_mins=0
-        )
-
-        self.assertEqual(data, expected_response)
-
-        self.assertNotIn('last_login', data)
-        self.assertIsNone(UserModel.get(data['id']).last_login)
 
     def assertAccessToken(self, expected_username, token):
         decoded_token = decode_token(token)

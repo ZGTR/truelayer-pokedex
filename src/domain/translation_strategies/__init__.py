@@ -1,0 +1,5 @@
+from src.domain.translation_strategies import pokemon_translation_factory
+from src.domain.translation_strategies import pokemon_translation_strategy
+from src.domain.translation_strategies import pokemon_translation_strategy_standard
+from src.domain.translation_strategies import pokemon_translation_strategy_yoda
+from src.domain.translation_strategies import pokemon_translation_strategy_shakespeare

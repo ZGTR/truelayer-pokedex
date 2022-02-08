@@ -5,23 +5,13 @@ from src.bootstrap.bootstrap_the_app import api
 from src.core.resource import BaseResource
 from src.core.schema import BaseSchema
 from src.domain import *
+from src.domain.translation_strategies.pokemon_translation_strategy import PokemonTranslationStrategy
 
 
-class PokemonTranslationFactory:
-
-    TRANSLATION_FACTORY_MAP = {
-        Pokemon()
-    }
+class PokemonTrasnlationStrategyYoda(PokemonTranslationStrategy):
 
     def __init__(self):
         pass
 
-    def create_strategy(self, pokemon):
-        try:
-            if pokemon.habitat == 'cave' or pokemon.isLegendary:
-                PokemonTrasnlationStrategyYoda()
-            else
-                PokemonTranslationShakespeare()
-        except:
-            PokemonTranslationStandard()
-
+    def translate(self, description):
+        return None
