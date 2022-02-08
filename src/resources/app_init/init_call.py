@@ -1,14 +1,13 @@
 from flask import url_for
 from flask_restful import Resource
 
-from src.bootstrap.bootstrap_the_app import api
+from src.bootstrap.bootstrap_the_app import api, BaseResource
 
 
-class RcAppInit(Resource):
+class RcAppInit(BaseResource):
     path = "/v1/app/init"
 
     def get(self):
-        print('----- in resource')
         resp = {
             'actions':
                 {

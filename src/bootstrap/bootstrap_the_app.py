@@ -40,8 +40,8 @@ from src.bootstrap_stages.stage02 import *
 from src.bootstrap_stages.stage02.error_handling import *
 app.register_blueprint(errors)
 
+from src.core.base_resource import BaseResource
 from src.resources import *
-
 app.register_blueprint(routes)
 
 # print_routes()

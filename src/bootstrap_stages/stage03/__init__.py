@@ -1,0 +1,1 @@
+from src.core.base_resource import BaseResource

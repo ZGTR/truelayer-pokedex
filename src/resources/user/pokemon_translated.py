@@ -2,13 +2,12 @@ from marshmallow import fields
 from marshmallow.validate import OneOf
 from flask_restful import Resource
 
-from src.bootstrap.bootstrap_the_app import api
-from src.core.schema import BaseSchema
+from src.bootstrap.bootstrap_the_app import api, BaseResource
 from src.domain import *
 
 
-class RcPokemonTranslated(Resource):
-    # Better to have Base Resource class which handles schemas (Marshmallow) abstractly with its errors.
+class RcPokemonTranslated(BaseResource):
+    # Better to create logic in TrueLayerResource class which handles schemas (Marshmallow) abstractly with its errors.
     path = "/v1/pokemon/translated/<string:pokemon_name>"
 
     def get(self, pokemon_name):
