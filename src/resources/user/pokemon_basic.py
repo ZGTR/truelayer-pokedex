@@ -5,7 +5,7 @@ from marshmallow import Schema, fields
 from src.bootstrap.bootstrap_the_app import api
 from src.core.base_resource import BaseResource
 from src.domain import *
-from src.domain.pokemons.pokemon_factory import PokemonFactory
+from src.domain.pokemons.pokemon_basic_factory import PokemonBasicFactory
 
 
 class RcPokemonBasic(BaseResource):
@@ -14,14 +14,14 @@ class RcPokemonBasic(BaseResource):
 
     def get(self, pokemon_name):
         try:
-            pokemon = PokemonFactory.grab(pokemon_name)
+            pokemon = PokemonBasicFactory().grab(pokemon_name)
 
-            # We can return this directly from pokemon.__repr__ and JSONify it in 1 line.
+            # We can return this directly from pokemon.__dict__ and JSONify it in 1 line.
             # But, since we want to separate between presentation API and business layer,
             # it's better to keep them separate for now.
             resp = {
                 'name': pokemon.name,
-                'description': pokemon.basic_description,
+                'description': pokemon.description,
                 'habitat': pokemon.habitat,
                 'isLegendary': pokemon.is_legendary
             }

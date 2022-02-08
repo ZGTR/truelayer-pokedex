@@ -5,15 +5,13 @@ from src.domain.exceptions.exception_pokemon_does_not_exits import ExceptionPoke
 from src.services import ClientPokeApi, SingletonMeta
 
 
-class PokemonFactory(metaclass=SingletonMeta):
+class PokemonBasicFactory(metaclass=SingletonMeta):
 
     def __init__(self):
         pass
 
-    @classmethod
-    def grab(cls, pokemon_name):
+    def grab(self, pokemon_name):
         try:
-            # Better to make ClientPokeApi as a singleton module.
             return ClientPokeApi().grab(pokemon_name)
         except:
             raise ExceptionPokeApiError()

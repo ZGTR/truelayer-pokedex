@@ -1,10 +1,9 @@
-import unittest
-
 from flask import url_for
-from src.tests.base import IntegrationBaseTest
+import unittest
+from src.tests.base import BaseTest
 
 
-class TestInitCall(IntegrationBaseTest):
+class TestInitCall(BaseTest):
     path = "/v1/app/init"
 
     def test_init_success(self):

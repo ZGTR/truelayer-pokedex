@@ -6,9 +6,8 @@ from src.domain import *
 
 
 class Pokemon:
-    def __init__(self, name, basic_description, habitat, is_legendary):
+    def __init__(self, name, description, habitat, is_legendary):
         self.name = name
-        self.basic_description = basic_description
+        self.description = description
         self.habitat = habitat
         self.is_legendary = is_legendary
-

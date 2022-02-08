@@ -1,7 +1,6 @@
 import os
-from unittest import TestCase
-
 import boto3
+from unittest import TestCase
 from moto import mock_s3, mock_ses
 
 from src.bootstrap.bootstrap_the_app import app
@@ -14,8 +13,6 @@ class BaseTest(TestCase):
 
     def setUp(self):
         super().setUp()
-        self.set_aws_credentials()
-
         self.app = app.test_client()
         self.app.application.config['PRESERVE_CONTEXT_ON_EXCEPTION'] = False
 
@@ -57,10 +54,5 @@ class BaseTest(TestCase):
                 actual_date = Utils.str_to_date(actual_date)
         self.assertEqual(expected_date, actual_date)
 
-    def set_aws_credentials(self):
-        """Mocked AWS Credentials for moto."""
-        os.environ['AWS_ACCESS_KEY_ID'] = 'testing'
-        os.environ['AWS_SECRET_ACCESS_KEY'] = 'testing'
-        os.environ['AWS_SECURITY_TOKEN'] = 'testing'
-        os.environ['AWS_SESSION_TOKEN'] = 'testing'
-        boto3.setup_default_session()
+    def assertStatusCode(self, response, status_code):
+        self.assertEqual(status_code, response.status_code)

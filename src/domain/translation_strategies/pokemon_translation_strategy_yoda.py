@@ -4,12 +4,13 @@ from marshmallow.validate import OneOf
 from src.bootstrap.bootstrap_the_app import api
 from src.domain import *
 from src.domain.translation_strategies.pokemon_translation_strategy import PokemonTranslationStrategy
+from src.services.client_translation_yoda import ClientTranslationYoda
 
 
-class PokemonTrasnlationStrategyYoda(PokemonTranslationStrategy):
+class PokemonTranslationStrategyYoda(PokemonTranslationStrategy):
 
     def __init__(self):
         pass
 
     def translate(self, description):
-        return None
+        return ClientTranslationYoda().translate(description)
