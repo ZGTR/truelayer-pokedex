@@ -2,7 +2,6 @@ import dataclasses
 import decimal
 import json
 from datetime import datetime, date
-
 from flask_babel import LazyString
 from src.models import BaseModel
 
