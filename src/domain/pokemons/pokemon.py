@@ -11,5 +11,5 @@ class Pokemon:
         self.name = name
         self.basic_description = basic_description
         self.habitat = habitat
-        self.isLegendary = is_legendary
+        self.is_legendary = is_legendary
 

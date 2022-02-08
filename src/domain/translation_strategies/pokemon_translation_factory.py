@@ -1,4 +1,5 @@
 from src.bootstrap.bootstrap_the_app import api
+from src.core.metaclasses import SingletonMeta
 from src.core.schema import BaseSchema
 from src.domain import *
 from src.domain.translation_strategies.pokemon_translation_strategy_shakespeare import \
@@ -7,17 +8,17 @@ from src.domain.translation_strategies.pokemon_translation_strategy_standard imp
 from src.domain.translation_strategies.pokemon_translation_strategy_yoda import PokemonTrasnlationStrategyYoda
 
 
-class PokemonTranslationFactory:
+class PokemonTranslationFactory(metaclass=SingletonMeta):
 
     def __init__(self):
         pass
 
     def create_strategy(self, pokemon):
         try:
-            if pokemon.habitat == 'cave' or pokemon.isLegendary:
-                return PokemonTrasnlationStrategyYoda()
+            if pokemon.habitat == 'cave' or pokemon.is_legendary:
+                return PokemonTrasnlationStrategyYoda(pokemon.basic_description)
             else:
-                return PokemonTranslationStrategyShakespeare()
+                return PokemonTranslationStrategyShakespeare(pokemon.basic_description)
         except:
-            return PokemonTranslationStrategyStandard()
+            return PokemonTranslationStrategyStandard(pokemon.basic_description)
 

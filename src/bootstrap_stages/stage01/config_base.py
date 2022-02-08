@@ -17,6 +17,6 @@ class ConfigBase(object):
     JWT_AUTH_USERNAME_KEY = 'username'
     PROPAGATE_EXCEPTIONS = True
 
-    THIRD_PARTY_URL_POKEMON_BASIC_INFO = 'https://pokeapi.co/api/v2/pokemon'
+    THIRD_PARTY_URL_POKEMON_BASIC_INFO = 'https://pokeapi.co/api/v2/pokemon-species'
     THIRD_PARTY_URL_POKEMON_TRANSLATION_SHAKESPEARE = 'https://api.funtranslations.com/translate/shakespeare'
     THIRD_PARTY_URL_POKEMON_TRANSLATION_YODA = 'https://api.funtranslations.com/translate/yoda'

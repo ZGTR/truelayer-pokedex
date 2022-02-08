@@ -8,16 +8,18 @@ from src.domain import *
 
 
 class RcPokemonTranslated(Resource):
+    # Better to have Base Resource class which handles schemas (Marshmallow) abstractly with its errors.
     path = "/v1/pokemon/translated/<string:pokemon_name>"
 
     def get(self, pokemon_name):
-        # Better to have Base Resource class which handles schemas (Marshmallow) abstractly with its errors.
 
+        # We can return this directly from pokemon.__repr__ and JSONify it.
+        # But, since we want to separate between presentation API and logic API, it's better to keep them separate.
         resp = {
             'name': pokemon_name,
             'description': '',
             'habitat': '',
-            'isLegendary': ''
+            'isLegendary': True
         }
         return resp
 
