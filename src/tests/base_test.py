@@ -19,18 +19,11 @@ class BaseTest(TestCase):
         self.app = app.test_client()
         self.app.application.config['PRESERVE_CONTEXT_ON_EXCEPTION'] = False
 
-        DDbMigrator.up()
-
-        Seeder.ddb_seed(sources=self.data_sources)
-
         self.ctx = app.test_request_context()
         self.ctx.push()
 
     def tearDown(self):
         self.ctx.pop()
-        DDbMigrator.down()
-
-        super().tearDown()
 
     def assertKeysIn(self, keys, dictionary):
         dict_keys = dictionary.keys()

@@ -13,6 +13,9 @@ package:
   exclude: ${file(${self:custom.config_folder}/slsignore.yml)}
 
 custom:
+  serverless-offline:
+    noPrependStageInUrl: false
+
   config_folder: './.serverless-config'
   rcsDeletePolicies:
     prod: Retain
@@ -31,8 +34,8 @@ custom:
     prod-api: api.truelayer-pokedex.com
     staging-api: staging-api.truelayer-pokedex.com
     dev-api: dev-api.truelayer-pokedex.com
-    test-api: localhost:5000
-    local-api: localhost:5010
+    test-api: localhost:3000
+    local-api: localhost:3000
 
   customDomain:
     basePath: ''

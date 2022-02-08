@@ -53,8 +53,6 @@ class BaseResource(Resource):
     def _logResponse(cls, httpResponseCode):
         logString = "response created"
         logString += f" - HTTP response code: {httpResponseCode}"
-        if current_user:
-            logString += f" - Requester user_id: {current_user.id}"
         cls._logAccess(logString)
 
 

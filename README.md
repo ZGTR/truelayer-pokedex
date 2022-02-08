@@ -31,7 +31,7 @@ pip install -r requirements/development.txt
 ```shell script
 cd path/to/project
 source venv/bin/activate
-sls offline start --stage local-api --region local --httpPort 5010
+sls offline start --stage local-api --region local
 ```
    
 - The output should be similar to this:
@@ -55,7 +55,7 @@ ANY | http://localhost:5010/local-api                               │
 - Run the tests:
 ```shell script
 cd path/to/project
-pipenv shell
+source venv/bin/activate
 stage=test-api stage_rcs=test pytest src/tests  --hypothesis-show-statistics --cov=src --cov-report html
 ```
 

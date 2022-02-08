@@ -27,7 +27,11 @@ def lambda_handler(event, context):
     if principal_id:
         policy.allowAllMethods()
     else:
-        policy.denyAllMethods()
         logger.error("Not a recognizable client. You are not allowed here.")
+        policy.denyAllMethods()
 
-    return policy.build()
+    built_policy = policy.build()
+
+    print(f'build_policy = {built_policy}')
+
+    return built_policy

@@ -14,13 +14,7 @@ app:
         path: /
         method: ANY
         cors: true
-        authorizer: ${self:custom.authorizer.authorizer_mobile_app_bearer}
-
-    - http:
-        path: /{proxy+}
-        method: ANY
-        cors: true
-        authorizer: ${self:custom.authorizer.authorizer_mobile_app_bearer}
+#        authorizer: ${self:custom.authorizer.authorizer_mobile_app_bearer}
 
     - http:
         path: /v1/mobile-app/init

@@ -14,7 +14,7 @@ class ConfigLocal(ConfigBase):
     JWT_BLACKLIST_ENABLED = True
     JWT_BLACKLIST_TOKEN_CHECKS = ['access', 'refresh']
 
-    SERVER_NAME = 'localhost:3010'
+    SERVER_NAME = 'localhost:3000'
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(days=0.5)
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=0.75)
     JWT_AUTH_USERNAME_KEY = 'username'

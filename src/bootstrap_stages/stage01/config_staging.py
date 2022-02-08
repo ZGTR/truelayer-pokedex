@@ -1,6 +1,5 @@
 from datetime import timedelta
 
-from src.bootstrap_stages.stage00 import parameter_store
 from src.bootstrap_stages.stage01.config_base import ConfigBase
 
 
@@ -9,12 +8,6 @@ class ConfigStaging(ConfigBase):
     # https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-organize.html
     # path variable is used as the root of the hierarchy
     SSM_PATH = '/NFX_ARES/STAGING/'
-    params = parameter_store.get_parameters_by_path(path=SSM_PATH,
-                                                    decrypt=False,
-                                                    recursive=True,
-                                                    strip_path=False,
-                                                    strip_root=True)
-
     DEBUG = False
     TESTING = False
     SECRET_KEY = params['SECRET_KEY']
