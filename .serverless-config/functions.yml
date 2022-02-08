@@ -17,8 +17,14 @@ app:
 #        authorizer: ${self:custom.authorizer.authorizer_mobile_app_bearer}
 
     - http:
-        path: /v1/mobile-app/init
+        path: /v1/app/init
         method: GET
         cors: true
         authorizer: ${self:custom.authorizer.authorizer_mobile_app_basic_auth}
 
+
+    - http:
+        path: /v1/pokemon/{proxy+}
+        method: GET
+        cors: true
+        authorizer: ${self:custom.authorizer.authorizer_mobile_app_basic_auth}

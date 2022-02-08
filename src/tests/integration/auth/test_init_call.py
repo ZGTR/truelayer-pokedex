@@ -1,8 +1,10 @@
+import unittest
+
 from flask import url_for
 from src.tests.base import IntegrationBaseTest
 
 
-class InitCallTest(IntegrationBaseTest):
+class TestInitCall(IntegrationBaseTest):
     path = "/v1/app/init"
 
     def test_init_success(self):
@@ -11,18 +13,19 @@ class InitCallTest(IntegrationBaseTest):
 
         actual_response = response.get_json()
         expected_response = {
-            'success': True,
             'actions':
                 {
-                    'pokemon_basic_description':
+                    'pokemon_basic':
                         {
-                            'href': url_for('rcpokemonbasic'),
+                            'href': url_for('rcpokemonbasic', pokemon_name='123'),
                         },
-                    'pokemon_translated_description':
+                    'pokemon_translated':
                         {
-                            'href': url_for('rcpokemontranslated'),
-                        },
-
+                            'href': url_for('rcpokemontranslated', pokemon_name='123'),
+                        }
                 }
         }
         self.assertDictStructure(expected_response, actual_response)
+
+if __name__ == "__main__":
+    unittest.main()

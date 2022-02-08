@@ -1,20 +1,24 @@
+from flask_restful import Resource
+from flask import Flask, request, abort
+from flask_restful import Resource, Api
+from marshmallow import Schema, fields
 from src.bootstrap.bootstrap_the_app import api
-from src.core.resource import BaseResource
 from src.core.schema import BaseSchema
 from src.domain import *
 
+class RcPokemonBasic(Resource):
+    path = "/v1/pokemon/<string:pokemon_name>"
 
-class RcPokemonBasic(BaseResource):
-    path = "/v1/pokemon/{pokemon_name}"
+    def get(self, pokemon_name):
+        # Better to have Base Resource class which handles schemas (Marshmallow) abstractly with its errors.
 
-    def get(self):
         resp = {
-            'name': '',
+            'name': pokemon_name,
             'description': '',
             'habitat': '',
             'isLegendary': ''
         }
-        return self.respond(resp)
+        return resp
 
 
 api.add_resource(RcPokemonBasic, RcPokemonBasic.path)

@@ -1,10 +1,10 @@
 from flask import url_for
+from flask_restful import Resource
 
 from src.bootstrap.bootstrap_the_app import api
-from src.core.resource import BaseResource
 
 
-class RcMobileAppInitV1(BaseResource):
+class RcAppInit(Resource):
     path = "/v1/app/init"
 
     def get(self):
@@ -12,18 +12,17 @@ class RcMobileAppInitV1(BaseResource):
         resp = {
             'actions':
                 {
-                    'pokemon_basic_description':
+                    'pokemon_basic':
                         {
-                            'href': url_for('rcpokemonbasic'),
+                            'href': url_for('rcpokemonbasic', pokemon_name=''),
                         },
-                    'pokemon_translated_description':
+                    'pokemon_translated':
                         {
-                            'href': url_for('rcpokemontranslated'),
-                        },
-
+                            'href': url_for('rcpokemontranslated', pokemon_name=''),
+                        }
                 }
         }
-        return self.respond(resp)
+        return resp
 
 
-api.add_resource(RcMobileAppInitV1, RcMobileAppInitV1.path)
+api.add_resource(RcAppInit, RcAppInit.path)
