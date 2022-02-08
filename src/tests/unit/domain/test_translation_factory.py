@@ -15,9 +15,6 @@ from src.domain.translation_strategies.pokemon_translation_strategy_yoda import 
 from src.services import ClientPokeApi
 from src.tests.base import BaseTest
 
-# def raising_error(an_instance, pokemon):
-#     raise requests.exceptions.ConnectionError
-
 class TestTranslationFactory(BaseTest):
     cave_and_legendary_pokemon = Pokemon(name='foo', description='bar', habitat='cave', is_legendary=True)
     cave_and_not_legendary_pokemon = Pokemon(name='foo', description='bar', habitat='cave', is_legendary=True)
@@ -40,10 +37,7 @@ class TestTranslationFactory(BaseTest):
         strategy = PokemonTranslationFactory().create_strategy(pokemon=self.non_cave_and_not_legendary_pokemon)
         self.assertIsInstance(strategy, PokemonTranslationStrategyShakespeare)
 
-    # def test_error_and_can_not_translate_with_factory(self):
-    #     with mock.patch.object(PokemonTranslationFactory, 'create_strategy', new=raising_error):
-    #         strategy = PokemonTranslationFactory().create_strategy(pokemon=self.cave_and_legendary_pokemon)
-    #         self.assertIsInstance(strategy, PokemonTranslationStrategyStandard)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -3,6 +3,7 @@ from src.bootstrap_stages.stage01 import config
 from src.domain.exceptions.exception_pokeapi_error import ExceptionPokeApiError
 from src.domain.exceptions.exception_pokemon_does_not_exits import ExceptionPokemonDoesNotExists
 from src.domain.translation_strategies.pokemon_translation_factory import PokemonTranslationFactory
+from src.domain.translation_strategies.pokemon_translation_strategy_standard import PokemonTranslationStrategyStandard
 from src.services import ClientPokeApi, SingletonMeta
 
 
@@ -18,7 +19,7 @@ class PokemonTranslatedFactory(metaclass=SingletonMeta):
             pokemon.description = strategy.translate(pokemon.description)
             return pokemon
         except:
-            # Should be a different exception based on error in PokeAPI or Translation.
-            raise ExceptionPokeApiError()
+            pokemon.description = PokemonTranslationStrategyStandard().translate(pokemon.description)
+            return pokemon
 
 
